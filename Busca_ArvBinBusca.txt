@@ -1,0 +1,10 @@
+public Nodo busca(Nodo raiz, info info)
+{
+    if (raiz == null || raiz.info == info)
+        return raiz;
+ 
+    if (raiz.info < info)
+       return busca(raiz.direita, info);
+ 
+    return busca(aiz.esquerda, info);
+}
