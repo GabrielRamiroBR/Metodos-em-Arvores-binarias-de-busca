@@ -1,9 +1,9 @@
-public class ArvBinBusca <T extends Comparable<T>>{
-    Node root;
+public class BinarySearchTree<T extends Comparable<T>>{
+    private Node root;
     private class Node <T extends Comparable<T>>{
-        T key;
-        Node right;
-        Node left;
+        private T key;
+        private Node right;
+        private Node left;
         private Node (T key){
             this.key = key;
             this.right = null;
@@ -20,18 +20,20 @@ public class ArvBinBusca <T extends Comparable<T>>{
     }
 
 
-    public ArvBinBusca(T key){
+    public BinarySearchTree(T key){
         Node root = new Node(key);
         this.root = root;
-
+    }
+    public BinarySearchTree(){
+        this.root = null;
     }
 
     public Node search(Node current, T key){
         if (current == null || current.key.compareTo(key) == 0)
             return current;
         return current.key.compareTo(key) < 0
-                ? search(current.left, key)
-                : search(current.right, key);
+                ? search(current.right, key)
+                : search(current.left, key);
     }
     public void insert (Node root, T key){
         Node newNode = new Node(key);
@@ -52,6 +54,10 @@ public class ArvBinBusca <T extends Comparable<T>>{
              y.left = newNode;
          else y.right = newNode;
 
+    }
+
+    public Node getRoot() {
+        return root;
     }
 }
 
